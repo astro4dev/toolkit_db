@@ -10,7 +10,7 @@ To creat the tables you need to first create the database using MySQL:
 CREATE DATABASE toolkit_db;
 ```
 
-Then from the _src_ directory run ```create_tables.py```
+Open up ```src/create_tables.py``` and change the password to the password of your mysql account. Then run ```create_tables.py``` to create the tables.
 
 If the database already exists and you want to start anew:
 
