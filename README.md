@@ -17,3 +17,21 @@ If the database already exists and you want to start anew:
 ```SQL
 DROP DATABASE IF EXISTS toolkit_db;
 ```
+
+## Look at the tables
+
+In the MySQL window select the ```toolkit_db``` database:
+
+```SQL
+USE toolkit_db;
+```
+
+To look at the topics table type:
+```SQL
+SELECT * FROM topics_astr;
+```
+
+To look at the sub-topic table type:
+```SQL
+SELECT * FROM subtopics_astr;
+```
