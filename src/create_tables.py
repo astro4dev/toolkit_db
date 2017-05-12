@@ -34,10 +34,11 @@ def main():
 	# Parameters
 	password 	= 'password'
 	database 	= 'toolkit_db'
-	tables 		= ['topics_astr','subtopics_astr']
+	tables 		= ['topics_astr','subtopics_astr','skills']
 	topics 		= ['Galaxies', 'Cosmology', 'Planetary', 'High Energy', 'Solar & Stellar']
 	subtopics 	= ['Pulsars','Galaxy Morphology']
-	all_topics  = [topics, subtopics]
+	skills 		= ['Data Wrangling','Python','R','Machine Learning']
+	all_topics  = [topics, subtopics, skills]
 	
 	# Connect to the database
 	db, cur = connect_db(database,password)
