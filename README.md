@@ -14,9 +14,11 @@ Before creating tables we want to ensure we are using the correct credentials in
 
 ```sh
 sudo cp /etc/mysql/debian.cnf /etc/mysql/user.cnf
+sudo chown user:user user.cnf
 ```
-
 and editing the ```[client]``` part of the file.
+
+Make sure you use your own username instead of user.
 
 Run ```create_tables.py``` to create the tables.
 
@@ -43,3 +45,5 @@ To look at the sub-topic table type:
 ```SQL
 SELECT * FROM subtopics_astr;
 ```
+
+## Export the tables
