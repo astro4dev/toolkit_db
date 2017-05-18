@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# This shell script is used to export a MySQL database.
+#
+file=/etc/mysql/user.cnf
+
+while [ -z "$host" ] && read ln; do
+        [[ "$ln" =~ host\ *=\ (.*)$ ]]
+        host="${BASH_REMATCH[1]}"
+done < $file
+
+while [ -z "$user" ] && read ln; do
+        [[ "$ln" =~ user\ *=\ (.*)$ ]]
+        user="${BASH_REMATCH[1]}"
+done < $file
+
+while [ -z "$pass" ] && read ln; do
+        [[ "$ln" =~ password\ *=\ (.*)$ ]]
+        pass="${BASH_REMATCH[1]}"
+done < $file
+
+database=toolkit_db
+
+echo "Backing up..."
+mysqldump -h $host --user=$user --password=$pass $database > toolkit_db.sql;
+echo "Databae backed up"
