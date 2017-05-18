@@ -1,7 +1,9 @@
 #!/bin/bash
 #
 # This shell script is used to export a MySQL database.
+# Adapted from: https://gist.github.com/valerio-bozzolan/b10199e2e2f835b7ca9a
 #
+
 file=/etc/mysql/user.cnf
 
 while [ -z "$host" ] && read ln; do

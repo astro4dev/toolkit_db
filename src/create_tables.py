@@ -1,12 +1,18 @@
 import MySQLdb as mdb
 import sys
+import configparser
 
-def connect_db(database,password):
+def connect_db(database):
 	# Connect to the database (DB) and fetch the version of the DB.
-	db = mdb.connect("localhost","root",password,database)
-	cur = db.cursor()
+	config 		= configparser.ConfigParser()
+	config.read('/etc/mysql/user.cnf')
+	username 	= config.get('client', 'user')
+	password 	= config.get('client', 'password')
+	hostname 	= config.get('client', 'host')
+	db 			= mdb.connect(hostname,username,password,database)
+	cur 		= db.cursor()
 	cur.execute("SELECT VERSION()")
-	ver = cur.fetchone()
+	ver 		= cur.fetchone()
 	print ("\nDatabase version : %s " % ver,"\n")
 	return db, cur
 
@@ -31,17 +37,21 @@ def populate_topics(cur, table, topics):
 
 def main():
 
-	# Parameters
-	password 	= 'password'
-	database 	= 'toolkit_db'
-	tables 		= ['topics_astr','subtopics_astr','skills']
+	# Parameters	
+	tables 		= ['topics_astr','subtopics_astr','skills','examples']
+	
 	topics 		= ['Galaxies', 'Cosmology', 'Planetary', 'High Energy', 'Solar & Stellar']
+	
 	subtopics 	= ['Pulsars','Galaxy Morphology']
+	
 	skills 		= ['Data Wrangling','Python','R','Machine Learning']
-	all_topics  = [topics, subtopics, skills]
+	
+	examples 	= ['Data Wrangling','Python','R','Machine Learning']
+	
+	all_topics  = [topics, subtopics, skills, examples]
 	
 	# Connect to the database
-	db, cur = connect_db(database,password)
+	db, cur 	= connect_db('toolkit_db')
 
 	# Create and populate the astronomy topic table
 	for i in range(len(tables)):

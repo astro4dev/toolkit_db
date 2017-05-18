@@ -10,7 +10,15 @@ To creat the tables you need to first create the database using MySQL:
 CREATE DATABASE toolkit_db;
 ```
 
-Open up ```src/create_tables.py``` and change the password to the password of your mysql account. Then run ```create_tables.py``` to create the tables.
+Before creating tables we want to ensure we are using the correct credentials in the ```create_tables.py``` script. On a Debian system this is done by typing the follwing command:
+
+```sh
+sudo cp /etc/mysql/debian.cnf /etc/mysql/user.cnf
+```
+
+and editing the ```[client]``` part of the file.
+
+Run ```create_tables.py``` to create the tables.
 
 If the database already exists and you want to start anew:
 
