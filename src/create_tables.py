@@ -38,7 +38,7 @@ def populate_topics(cur, table, topics):
 def main():
 
 	# Parameters	
-	tables 		= ['topics_astr','subtopics_astr','skills','examples']
+	tables 		= ['topics_astr','subtopics_astr','skills','links']
 	
 	topics 		= ['Galaxies', 'Cosmology', 'Planetary', 'High Energy', 'Solar & Stellar']
 	

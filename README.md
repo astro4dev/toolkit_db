@@ -36,7 +36,7 @@ Run ```src/create_tables.py``` to create the tables.
 python src/create_tables.py
 ```
 
-You will need the module called ```MySQL-python```. You can install it via ```pip```.
+You will need the module called ```MySQL-python```. You can install it via ```pip``.`
 
 If the database already exists and you want to start anew:
 
