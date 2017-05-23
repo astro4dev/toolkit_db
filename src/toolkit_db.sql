@@ -16,6 +16,58 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `assessments`
+--
+
+DROP TABLE IF EXISTS `assessments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `assessments` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `title` varchar(255) DEFAULT NULL,
+  `links` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `assessments`
+--
+
+LOCK TABLES `assessments` WRITE;
+/*!40000 ALTER TABLE `assessments` DISABLE KEYS */;
+INSERT INTO `assessments` VALUES (1,'2017-05-23 08:59:39','Python Assessment','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Programming/Python/Assessments');
+/*!40000 ALTER TABLE `assessments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `courses`
+--
+
+DROP TABLE IF EXISTS `courses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `courses` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `title` varchar(255) DEFAULT NULL,
+  `links` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `courses`
+--
+
+LOCK TABLES `courses` WRITE;
+/*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+INSERT INTO `courses` VALUES (1,'2017-05-23 08:54:57','An Introduction to SQL','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Data%20Wrangling/Courses/An%20Introduction%20to%20SQL'),(2,'2017-05-23 08:54:57','Astrophysical Machine Learning','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Courses/Astrophysical%20Machine%20Learning'),(3,'2017-05-23 08:55:37','Introduction to Python','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Programming/Python');
+/*!40000 ALTER TABLE `courses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `examples`
 --
 
@@ -28,7 +80,7 @@ CREATE TABLE `examples` (
   `title` varchar(255) DEFAULT NULL,
   `links` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +89,7 @@ CREATE TABLE `examples` (
 
 LOCK TABLES `examples` WRITE;
 /*!40000 ALTER TABLE `examples` DISABLE KEYS */;
-INSERT INTO `examples` VALUES (1,'2017-05-22 09:55:50','Predicting Pulsar Candidates','https://github.com/astro4dev/OAD-Data-Science-Toolkit/blob/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples/PPC/Predicting_Pulsar_Candidates.ipynb'),(2,'2017-05-22 09:55:50','Gaussian Mixture Model for Unsupervised Galaxy Classification','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Unsupervised%20Learning/Examples');
+INSERT INTO `examples` VALUES (1,'2017-05-23 08:52:58','Predicting Pulsar Candidates','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples'),(2,'2017-05-23 08:52:58','Gaussian Mixture Model for Unsupervised Galaxy Classification','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Unsupervised%20Learning/Examples'),(3,'2017-05-23 08:53:25','Simple Neural Network','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples');
 /*!40000 ALTER TABLE `examples` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,6 +119,30 @@ INSERT INTO `skills` VALUES (1,'2017-05-19 12:53:40','Data Wrangling'),(2,'2017-
 UNLOCK TABLES;
 
 --
+-- Table structure for table `skills__courses`
+--
+
+DROP TABLE IF EXISTS `skills__courses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `skills__courses` (
+  `skill_id` int(11) NOT NULL DEFAULT '0',
+  `course_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`skill_id`,`course_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `skills__courses`
+--
+
+LOCK TABLES `skills__courses` WRITE;
+/*!40000 ALTER TABLE `skills__courses` DISABLE KEYS */;
+INSERT INTO `skills__courses` VALUES (1,1),(2,3);
+/*!40000 ALTER TABLE `skills__courses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `skills__examples`
 --
 
@@ -86,7 +162,7 @@ CREATE TABLE `skills__examples` (
 
 LOCK TABLES `skills__examples` WRITE;
 /*!40000 ALTER TABLE `skills__examples` DISABLE KEYS */;
-INSERT INTO `skills__examples` VALUES (4,1),(4,2);
+INSERT INTO `skills__examples` VALUES (4,1),(4,2),(4,3);
 /*!40000 ALTER TABLE `skills__examples` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,6 +216,30 @@ INSERT INTO `topics_astr` VALUES (1,'Galaxies'),(2,'Cosmology'),(3,'Planetary'),
 UNLOCK TABLES;
 
 --
+-- Table structure for table `topics_astr__courses`
+--
+
+DROP TABLE IF EXISTS `topics_astr__courses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `topics_astr__courses` (
+  `topic_id` int(11) NOT NULL DEFAULT '0',
+  `course_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`topic_id`,`course_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `topics_astr__courses`
+--
+
+LOCK TABLES `topics_astr__courses` WRITE;
+/*!40000 ALTER TABLE `topics_astr__courses` DISABLE KEYS */;
+INSERT INTO `topics_astr__courses` VALUES (1,2),(2,2),(3,2);
+/*!40000 ALTER TABLE `topics_astr__courses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `topics_astr__examples`
 --
 
@@ -172,4 +272,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-22 15:53:35
+-- Dump completed on 2017-05-23 11:51:09

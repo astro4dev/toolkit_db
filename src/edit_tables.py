@@ -29,9 +29,11 @@ def connect_tables(cur, table, Id_1, Id_2, Value_1, Value_2):
 	# table1__table2. So the subscript 1 refers to table 1 etc.
 	cur.execute("INSERT INTO "+table+" ("+Id_1+","+Id_2+") VALUES('"+Value_1+"','"+Value_2+"');")
 
-#def table_entry(cur, table, column, entry, Id):
-#	# Add the topics fo the database.
-#	cur.execute("INSERT INTO "+table+"("+column+") VALUES(\""+entry+"\") WHERE Id = "+Id+";")
+def table_entry(cur, table, column, entry):
+	# Add the topics fo the database.
+	cur.execute("UPDATE "+table+" SET last_updated = CURRENT_TIMESTAMP;")
+	cur.execute("INSERT INTO "+table+"("+column+") VALUES(\""+entry+"\");")
+	
 
 
 def main():
@@ -42,20 +44,25 @@ def main():
 	# Add column
 	#add_column(cur, "examples", "title", "VARCHAR(255)", "AFTER", "creation_time")
 
+	# Add table entry
+	#table_entry(cur, "courses", "title", "Introduction to Python")
+
 	# Works well
-	#update_cell(cur, "examples", "title", "Predicting Pulsar Candidates", "1")
-	#update_cell(cur, "examples", "links", "https://github.com/astro4dev/OAD-Data-Science-Toolkit/blob/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples/PPC/Predicting_Pulsar_Candidates.ipynb", "1")
+	update_cell(cur, "assessments", "title", "Python Assessment", "1")
+	update_cell(cur, "assessments", "links", "https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Programming/Python/Assessments", "1")
 
-	#
+
+	#update_cell(cur, "courses", "links", "https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Data%20Wrangling/Courses/An%20Introduction%20to%20SQL", "1")
+
+	# works well
 	#connect_tables(cur, "topics_astr__examples", "topic_id", "example_id", "1", "2")
-	connect_tables(cur, "skills__examples", "skill_id", "example_id", "4", "1")
-	connect_tables(cur, "skills__examples", "skill_id", "example_id", "4", "2")
+	#connect_tables(cur, "skills__examples", "skill_id", "example_id", "4", "1")
+	#connect_tables(cur, "skills__examples", "skill_id", "example_id", "4", "2")
 
 
 
-	# Ignore this
-	#table_entry(cur, "examples", "title", "https://raw.githubusercontent.com/astro4dev/OAD-Data-Science-Toolkit/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples/PPC/Predicting_Pulsar_Candidates.ipynb", "1")
-	#print("Table populated.\n")
+	
+	print("Table populated.\n")
 	
 	# Commit the changes and close the database
 	db.commit()
