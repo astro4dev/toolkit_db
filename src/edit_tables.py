@@ -31,7 +31,7 @@ def connect_tables(cur, table, Id_1, Id_2, Value_1, Value_2):
 
 def table_entry(cur, table, column, entry):
 	# Add the topics fo the database.
-	cur.execute("UPDATE "+table+" SET last_updated = CURRENT_TIMESTAMP;")
+	#cur.execute("UPDATE "+table+" SET last_updated = CURRENT_TIMESTAMP;")
 	cur.execute("INSERT INTO "+table+"("+column+") VALUES(\""+entry+"\");")
 	
 
@@ -45,12 +45,14 @@ def main():
 	#add_column(cur, "examples", "title", "VARCHAR(255)", "AFTER", "creation_time")
 
 	# Add table entry
-	#table_entry(cur, "courses", "title", "Introduction to Python")
+	#table_entry(cur, "authors", "name", "Dr. Rob Lyon")
 
 	# Works well
-	update_cell(cur, "assessments", "title", "Python Assessment", "1")
-	update_cell(cur, "assessments", "links", "https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Programming/Python/Assessments", "1")
+	#update_cell(cur, "authors", "affiliation", "University of Manchester, UK", "1")
+	#update_cell(cur, "assessments", "links", "https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Programming/Python/Assessments", "1")
 
+	#update_cell(cur, "authors", "name", "Dr. Rob Lyon", "1")
+	#update_cell(cur, "assessments", "links", "https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Programming/Python/Assessments", "1")
 
 	#update_cell(cur, "courses", "links", "https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Data%20Wrangling/Courses/An%20Introduction%20to%20SQL", "1")
 
