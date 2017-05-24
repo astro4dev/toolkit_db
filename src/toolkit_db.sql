@@ -42,6 +42,104 @@ INSERT INTO `assessments` VALUES (1,'2017-05-23 08:59:39','Python Assessment','h
 UNLOCK TABLES;
 
 --
+-- Table structure for table `authors`
+--
+
+DROP TABLE IF EXISTS `authors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `authors` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `affiliation` varchar(255) DEFAULT NULL,
+  `author_link` varchar(512) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `authors`
+--
+
+LOCK TABLES `authors` WRITE;
+/*!40000 ALTER TABLE `authors` DISABLE KEYS */;
+INSERT INTO `authors` VALUES (1,'Dr. Rob Lyon','University of Manchester, UK','https://github.com/scienceguyrob'),(2,'Dr. Paul A. Wilson','OAD, South Africa','https://www.paulanthonywilson.com'),(3,'Dr. Arun Aniyan','AIMS, South Africa','https://github.com/ArunAniyan'),(4,'Dr. Anna Scaife','University of Manchester, UK','http://www.manchester.ac.uk/research/anna.scaife/'),(5,'Dr. Vanessa McBride','OAD, South Africa','http://www.ast.uct.ac.za/~vanessa/vanessa/Home.html'),(6,'Dr. Shea Brown','University of Iowa, USA','http://webusers.astro.umn.edu/%7Ebrown/'),(7,'Dr. Sean February','CHPC, South Africa','https://www.chpc.ac.za/'),(8,'Dr. Pierre-Yves Lablanche','AIMS, South Africa','https://github.com/pylablanche');
+/*!40000 ALTER TABLE `authors` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `authors__assessments`
+--
+
+DROP TABLE IF EXISTS `authors__assessments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `authors__assessments` (
+  `author_id` int(11) NOT NULL DEFAULT '0',
+  `assessment_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`author_id`,`assessment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `authors__assessments`
+--
+
+LOCK TABLES `authors__assessments` WRITE;
+/*!40000 ALTER TABLE `authors__assessments` DISABLE KEYS */;
+INSERT INTO `authors__assessments` VALUES (2,1);
+/*!40000 ALTER TABLE `authors__assessments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `authors__courses`
+--
+
+DROP TABLE IF EXISTS `authors__courses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `authors__courses` (
+  `author_id` int(11) NOT NULL DEFAULT '0',
+  `course_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`author_id`,`course_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `authors__courses`
+--
+
+LOCK TABLES `authors__courses` WRITE;
+/*!40000 ALTER TABLE `authors__courses` DISABLE KEYS */;
+INSERT INTO `authors__courses` VALUES (2,1),(2,3),(6,2);
+/*!40000 ALTER TABLE `authors__courses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `authors__examples`
+--
+
+DROP TABLE IF EXISTS `authors__examples`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `authors__examples` (
+  `author_id` int(11) NOT NULL DEFAULT '0',
+  `example_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`author_id`,`example_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `authors__examples`
+--
+
+LOCK TABLES `authors__examples` WRITE;
+/*!40000 ALTER TABLE `authors__examples` DISABLE KEYS */;
+INSERT INTO `authors__examples` VALUES (1,1),(3,3),(8,2);
+/*!40000 ALTER TABLE `authors__examples` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `courses`
 --
 
@@ -89,7 +187,7 @@ CREATE TABLE `examples` (
 
 LOCK TABLES `examples` WRITE;
 /*!40000 ALTER TABLE `examples` DISABLE KEYS */;
-INSERT INTO `examples` VALUES (1,'2017-05-23 08:52:58','Predicting Pulsar Candidates','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples'),(2,'2017-05-23 08:52:58','Gaussian Mixture Model for Unsupervised Galaxy Classification','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Unsupervised%20Learning/Examples'),(3,'2017-05-23 08:53:25','Simple Neural Network','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples');
+INSERT INTO `examples` VALUES (1,'2017-05-23 14:27:13','Predicting Pulsar Candidates','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples'),(2,'2017-05-23 08:52:58','Gaussian Mixture Model for Unsupervised Galaxy Classification','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Unsupervised%20Learning/Examples'),(3,'2017-05-23 08:53:25','Simple Neural Network','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples');
 /*!40000 ALTER TABLE `examples` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,6 +217,30 @@ INSERT INTO `skills` VALUES (1,'2017-05-19 12:53:40','Data Wrangling'),(2,'2017-
 UNLOCK TABLES;
 
 --
+-- Table structure for table `skills__assessments`
+--
+
+DROP TABLE IF EXISTS `skills__assessments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `skills__assessments` (
+  `skill_id` int(11) NOT NULL DEFAULT '0',
+  `assessment_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`skill_id`,`assessment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `skills__assessments`
+--
+
+LOCK TABLES `skills__assessments` WRITE;
+/*!40000 ALTER TABLE `skills__assessments` DISABLE KEYS */;
+INSERT INTO `skills__assessments` VALUES (2,1);
+/*!40000 ALTER TABLE `skills__assessments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `skills__courses`
 --
 
@@ -138,7 +260,7 @@ CREATE TABLE `skills__courses` (
 
 LOCK TABLES `skills__courses` WRITE;
 /*!40000 ALTER TABLE `skills__courses` DISABLE KEYS */;
-INSERT INTO `skills__courses` VALUES (1,1),(2,3);
+INSERT INTO `skills__courses` VALUES (1,1),(2,2),(2,3),(4,2);
 /*!40000 ALTER TABLE `skills__courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,7 +284,7 @@ CREATE TABLE `skills__examples` (
 
 LOCK TABLES `skills__examples` WRITE;
 /*!40000 ALTER TABLE `skills__examples` DISABLE KEYS */;
-INSERT INTO `skills__examples` VALUES (4,1),(4,2),(4,3);
+INSERT INTO `skills__examples` VALUES (2,1),(2,2),(2,3),(4,1),(4,2),(4,3);
 /*!40000 ALTER TABLE `skills__examples` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,4 +394,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-23 11:51:09
+-- Dump completed on 2017-05-24 15:24:10
