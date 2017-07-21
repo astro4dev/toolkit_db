@@ -25,4 +25,4 @@ database=toolkit_db
 
 echo "Backing up..."
 mysqldump -h $host --user=$user --password=$pass $database > toolkit_db.sql;
-echo "Databae backed up"
+echo "Database backed up"

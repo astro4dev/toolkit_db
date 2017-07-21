@@ -2,7 +2,7 @@
 --
 -- Host: dbint.astro4dev.org    Database: toolkit_db
 -- ------------------------------------------------------
--- Server version	5.7.18-0ubuntu0.16.04.1
+-- Server version	5.7.19-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +28,7 @@ CREATE TABLE `assessments` (
   `title` varchar(255) DEFAULT NULL,
   `links` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,8 +53,9 @@ CREATE TABLE `authors` (
   `name` varchar(255) DEFAULT NULL,
   `affiliation` varchar(255) DEFAULT NULL,
   `author_link` varchar(512) DEFAULT NULL,
+  `author_img` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +64,7 @@ CREATE TABLE `authors` (
 
 LOCK TABLES `authors` WRITE;
 /*!40000 ALTER TABLE `authors` DISABLE KEYS */;
-INSERT INTO `authors` VALUES (1,'Dr. Rob Lyon','University of Manchester, UK','https://github.com/scienceguyrob'),(2,'Dr. Paul A. Wilson','OAD, South Africa','https://www.paulanthonywilson.com'),(3,'Dr. Arun Aniyan','AIMS, South Africa','https://github.com/ArunAniyan'),(4,'Dr. Anna Scaife','University of Manchester, UK','http://www.manchester.ac.uk/research/anna.scaife/'),(5,'Dr. Vanessa McBride','OAD, South Africa','http://www.ast.uct.ac.za/~vanessa/vanessa/Home.html'),(6,'Dr. Shea Brown','University of Iowa, USA','http://webusers.astro.umn.edu/%7Ebrown/'),(7,'Dr. Sean February','CHPC, South Africa','https://www.chpc.ac.za/'),(8,'Dr. Pierre-Yves Lablanche','AIMS, South Africa','https://github.com/pylablanche');
+INSERT INTO `authors` VALUES (1,'Dr. Rob Lyon','University of Manchester, UK','https://github.com/scienceguyrob',''),(2,'Dr. Paul A. Wilson','OAD, South Africa','https://www.paulanthonywilson.com','https://avatars3.githubusercontent.com/u/617038?v=3&s=400'),(3,'Dr. Arun Aniyan','AIMS, South Africa','https://github.com/ArunAniyan',''),(4,'Dr. Anna Scaife','University of Manchester, UK','http://www.manchester.ac.uk/research/anna.scaife/',''),(5,'Dr. Vanessa McBride','OAD, South Africa','http://www.ast.uct.ac.za/~vanessa/vanessa/Home.html',''),(6,'Dr. Shea Brown','University of Iowa, USA','http://webusers.astro.umn.edu/%7Ebrown/',''),(7,'Dr. Sean February','CHPC, South Africa','https://www.chpc.ac.za/',''),(8,'Dr. Pierre-Yves Lablanche','AIMS, South Africa','https://github.com/pylablanche',''),(9,'Dr. Jake VanderPlas','University of Washington, USA','https://staff.washington.edu/jakevdp/','');
 /*!40000 ALTER TABLE `authors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +112,7 @@ CREATE TABLE `authors__courses` (
 
 LOCK TABLES `authors__courses` WRITE;
 /*!40000 ALTER TABLE `authors__courses` DISABLE KEYS */;
-INSERT INTO `authors__courses` VALUES (2,1),(2,3),(6,2);
+INSERT INTO `authors__courses` VALUES (2,1),(2,3),(6,2),(9,4);
 /*!40000 ALTER TABLE `authors__courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,7 +162,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES (1,'2017-05-23 08:54:57','An Introduction to SQL','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Data%20Wrangling/Courses/An%20Introduction%20to%20SQL'),(2,'2017-05-23 08:54:57','Astrophysical Machine Learning','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Courses/Astrophysical%20Machine%20Learning'),(3,'2017-05-23 08:55:37','Introduction to Python','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Programming/Python');
+INSERT INTO `courses` VALUES (1,'2017-05-23 08:54:57','An Introduction to SQL','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Data%20Wrangling/Courses/An%20Introduction%20to%20SQL'),(2,'2017-05-23 08:54:57','Astrophysical Machine Learning','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Courses/Astrophysical%20Machine%20Learning'),(3,'2017-05-23 08:55:37','Introduction to Python','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Programming/Python'),(4,'2017-05-31 08:24:53','Scikit-learn Tutorial','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Courses/sklearn_tutorial');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,7 +179,7 @@ CREATE TABLE `examples` (
   `title` varchar(255) DEFAULT NULL,
   `links` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,7 +204,7 @@ CREATE TABLE `skills` (
   `creation_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `skills` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +213,7 @@ CREATE TABLE `skills` (
 
 LOCK TABLES `skills` WRITE;
 /*!40000 ALTER TABLE `skills` DISABLE KEYS */;
-INSERT INTO `skills` VALUES (1,'2017-05-19 12:53:40','Data Wrangling'),(2,'2017-05-19 12:53:40','Python'),(3,'2017-05-19 12:53:40','R'),(4,'2017-05-19 12:53:40','Machine Learning');
+INSERT INTO `skills` VALUES (1,'2017-05-19 12:53:40','Data Wrangling'),(2,'2017-05-19 12:53:40','Python'),(4,'2017-05-19 12:53:40','Machine Learning'),(5,'2017-05-19 12:53:40','More topics coming...');
 /*!40000 ALTER TABLE `skills` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,7 +261,7 @@ CREATE TABLE `skills__courses` (
 
 LOCK TABLES `skills__courses` WRITE;
 /*!40000 ALTER TABLE `skills__courses` DISABLE KEYS */;
-INSERT INTO `skills__courses` VALUES (1,1),(2,2),(2,3),(4,2);
+INSERT INTO `skills__courses` VALUES (1,1),(2,2),(2,3),(2,4),(4,2),(4,4);
 /*!40000 ALTER TABLE `skills__courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,7 +325,7 @@ CREATE TABLE `topics_astr` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `topics_astr` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -333,7 +334,7 @@ CREATE TABLE `topics_astr` (
 
 LOCK TABLES `topics_astr` WRITE;
 /*!40000 ALTER TABLE `topics_astr` DISABLE KEYS */;
-INSERT INTO `topics_astr` VALUES (1,'Galaxies'),(2,'Cosmology'),(3,'Planetary'),(4,'High Energy'),(5,'Solar & Stellar');
+INSERT INTO `topics_astr` VALUES (1,'Galaxies'),(5,'Solar & Stellar'),(6,'More topics coming...');
 /*!40000 ALTER TABLE `topics_astr` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -394,4 +395,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-24 15:24:10
+-- Dump completed on 2017-07-21 11:09:25
