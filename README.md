@@ -1,16 +1,12 @@
 # The OAD Data Science Toolkit Database 
 
-The OAD Data Science Toolkit Database (```toolkit_db```) is a relational SQL database used for the curriculum map of the OAD Data Science Toolkit. It is not ready yet, and is very much to be considered work in progress.
+The OAD Data Science Toolkit Database (```toolkit_db```) is a relational SQL database used for the curriculum map of the OAD Data Science Toolkit.
 
-## Create Tables
+## Accessing the database
 
-To create the tables you need to first create a database using MySQL:
+The database is available as a SQL file in this repository (toolkit_db.sql). To exmplre this database you need a mysql compatible program installed on your machine.
 
-```SQL
-CREATE DATABASE toolkit_db;
-```
-
-Before creating tables we want to ensure we are using the correct MySQL credentials. On a Debian system this is done by typing the follwing command:
+For the website to interface with the database, the website will look for a SQL config file called user.cnf. This file stores the information on the host, username and password. This file needs to be available on your system for you to be able to connect to the database via the website. Here are a few short instructions on how to configure this file:
 
 ```sh
 # Make a copy of the default config file
@@ -30,21 +26,7 @@ user     = your_MySQL_user
 password = your_MySQL_user_password
 ```
 
-Run ```src/create_tables.py``` to create the tables.
-
-```python
-python src/create_tables.py
-```
-
-You will need the module called ```MySQL-python```. You can install it via ```pip``.`
-
-If the database already exists and you want to start anew:
-
-```SQL
-DROP DATABASE IF EXISTS toolkit_db;
-```
-
-## Verify that the tables have been created
+## Verify that the config file is being read properly
 
 In the MySQL terminal select the ```toolkit_db``` database:
 
@@ -52,24 +34,7 @@ In the MySQL terminal select the ```toolkit_db``` database:
 USE toolkit_db;
 ```
 
-To look at the topics table type:
+See if you can access the topics table:
 ```SQL
 SELECT * FROM topics_astr;
 ```
-
-To look at the sub-topic table type:
-```SQL
-SELECT * FROM subtopics_astr;
-```
-
-## Export the tables
-
-To export the tables into a file called ```toolkit_db.sql``` run the bash script
-
-```sh
-cd src # change directory to the course directory
-chmod +x export_db.sh # Make it executable (need only do once)
-./export_db.sh
-```
-
-The database export, ```toolkit_db.sql```, will be placed in the ```src``` folder.
