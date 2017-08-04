@@ -4,9 +4,9 @@ The OAD Data Science Toolkit Database (```toolkit_db```) is a relational SQL dat
 
 ## Accessing the database
 
-The database is available as a SQL file in this repository (toolkit_db.sql). To exmplre this database you need a mysql compatible program installed on your machine.
+The database is available as a SQL file in this repository (_toolkit_db.sql_). To be able to access this database you need a mysql compatible program installed on your machine.
 
-For the website to interface with the database, the website will look for a SQL config file called user.cnf. This file stores the information on the host, username and password. This file needs to be available on your system for you to be able to connect to the database via the website. Here are a few short instructions on how to configure this file:
+For the website to interface with the database, the website will look for a SQL config file called _user.cnf_. This file stores the information on the host, username and password. This file needs to be available on your system for you to be able to connect to the database via the website. Here are a few short instructions on how to configure this file:
 
 ```sh
 # Make a copy of the default config file
