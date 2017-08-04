@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 5.5.55, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.57, for debian-linux-gnu (x86_64)
 --
 -- Host: dbint.astro4dev.org    Database: toolkit_db
 -- ------------------------------------------------------
@@ -27,6 +27,7 @@ CREATE TABLE `assessments` (
   `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `title` varchar(255) DEFAULT NULL,
   `links` varchar(512) DEFAULT NULL,
+  `language` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -37,7 +38,7 @@ CREATE TABLE `assessments` (
 
 LOCK TABLES `assessments` WRITE;
 /*!40000 ALTER TABLE `assessments` DISABLE KEYS */;
-INSERT INTO `assessments` VALUES (1,'2017-05-23 08:59:39','Python Assessment','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Programming/Python/Assessments');
+INSERT INTO `assessments` VALUES (1,'2017-05-23 08:59:39','Python Assessment','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Programming/Python/Assessments','EN');
 /*!40000 ALTER TABLE `assessments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -54,6 +55,8 @@ CREATE TABLE `authors` (
   `affiliation` varchar(255) DEFAULT NULL,
   `author_link` varchar(512) DEFAULT NULL,
   `author_img` varchar(512) DEFAULT NULL,
+  `about` varchar(4096) DEFAULT NULL,
+  `email` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -64,7 +67,7 @@ CREATE TABLE `authors` (
 
 LOCK TABLES `authors` WRITE;
 /*!40000 ALTER TABLE `authors` DISABLE KEYS */;
-INSERT INTO `authors` VALUES (1,'Dr. Rob Lyon','University of Manchester, UK','https://github.com/scienceguyrob',''),(2,'Dr. Paul A. Wilson','OAD, South Africa','https://www.paulanthonywilson.com','https://avatars3.githubusercontent.com/u/617038?v=3&s=400'),(3,'Dr. Arun Aniyan','AIMS, South Africa','https://github.com/ArunAniyan',''),(4,'Dr. Anna Scaife','University of Manchester, UK','http://www.manchester.ac.uk/research/anna.scaife/',''),(5,'Dr. Vanessa McBride','OAD, South Africa','http://www.ast.uct.ac.za/~vanessa/vanessa/Home.html','https://avatars2.githubusercontent.com/u/8647167?v=4&u=cb2e90bced1cf65e9a2de56099503563c27af8d4&s=400'),(6,'Dr. Shea Brown','University of Iowa, USA','http://webusers.astro.umn.edu/%7Ebrown/',''),(7,'Dr. Sean February','CHPC, South Africa','https://www.chpc.ac.za/',''),(8,'Dr. Pierre-Yves Lablanche','AIMS, South Africa','https://github.com/pylablanche',''),(9,'Dr. Jake VanderPlas','University of Washington, USA','https://staff.washington.edu/jakevdp/','');
+INSERT INTO `authors` VALUES (1,'Dr. Rob Lyon','University of Manchester, UK','https://github.com/scienceguyrob','',NULL,NULL),(2,'Dr. Paul A. Wilson','OAD, South Africa','https://www.paulanthonywilson.com','http://www.astro4dev.org/wp-content/uploads/2011/02/paul_anthony_wilson.jpg','<p>\r\nPaul is a visiting fellow who is leading the development of the OAD Data Science Toolkit aimed at teaching data science with astronomy. He is a professional astronomer by training, having obtained his PhD in astronomy from the University of Exeter. Paul has done research in several fields including exoplanet atmospheres, brown dwarfs, debris disks and exocomets. At the OAD Paul is developing this toolkit, aimed at helping astronomers identify and learn skills within astronomy that also comprise important data science skills. Paul is also working on providing people outside of astronomy with teaching materials which use astronomy applications to introduce data science skills.\r\n</p>','paul@astro4dev.org'),(3,'Dr. Arun Aniyan','AIMS, South Africa','https://github.com/ArunAniyan','https://avatars3.githubusercontent.com/u/5010454?v=4&s=460','<p>Arun is a machine learning researcher who focuses on using the latest advancements in machine learning for radio interferometric data. Arun collaborates with the Square Kilometre Array (SKA) office in Cape Town to build sophisticated machine learning algorithms  to make new discoveries from large amounts of data.</p>\r\n',NULL),(4,'Dr. Anna Scaife','University of Manchester, UK','http://www.manchester.ac.uk/research/anna.scaife/','',NULL,NULL),(5,'Dr. Vanessa McBride','OAD, South Africa','http://www.ast.uct.ac.za/~vanessa/vanessa/Home.html','http://www.ast.uct.ac.za/~vanessa/vanessa/Home_files/vanessa_meerlichtdome.jpg','<p>Vanessa is an astronomer working at the <a href=\"http://www.iau.org\" target=\"_blank\">IAU</a>\'s <a href=\"http://www.astro4dev.org\" target=\"_blank\">Office of Astronomy for Development</a> at the interface between the astronomy and the development community. She is available to assist with project conceptualisation, design and assessment.\r\n</p>\r\n<p>\r\nVanessa\'s astronomy research interests lie in the field of massive X-ray binaries. She has an honorary research associateship at the <a href=\"http://www.uct.ac.za\" target=\"_blank\">University of Cape Town</a>, in the <a href=\"http://www.ast.uct.ac.za\" target=\"_blank\">Department of Astronomy</a>.\r\n</p>',NULL),(6,'Dr. Shea Brown','University of Iowa, USA','http://astro.physics.uiowa.edu/~sbrown/','http://astro.physics.uiowa.edu/~sbrown/shea_tie.png','<p>Shea is currently a Visiting Assistant Professor at the University of Iowa Department of Physics and Astronomy. Prior to coming to Iowa, he was a Bolton Postdoctoral Fellow at CSIRO Astronomy & Space Science, and his interests are Cosmology and Extragalactic astrophysics. Shea works mainly as a radio astronomer, using powerful telescopes such as the Australia Telescope Compact Array, the Very Large Array, the Greenbank Telescope, and the Westerbork Synthesis Radio Telescope array</p>',NULL),(7,'Dr. Sean February','CHPC, South Africa','https://www.chpc.ac.za/','https://www.chpc.ac.za/images/images/staff/SeanFebruary.jpg',NULL,NULL),(8,'Dr. Pierre-Yves Lablanche','AIMS, South Africa','https://github.com/pylablanche','http://www.astro4dev.org/wp-content/uploads/2011/06/20151002-PP-Pierre-Yves-Lablanche-001_small.jpg','<p>Pierre is currently a post-doctoral fellow at the African Institute for Mathematical Sciences working on machine learning techniques for astronomy and astrophysics. He used to be a scientific educator for an astronomy club in France for several years and has always been involved in public engagement activities for science everywhere Pierre has been, from France and Germany to Tanzania and South Africa. Lately he has been focusing on how to make astronomy available to people with any kind of disability.</p>',NULL),(9,'Dr. Jake Vanderplas','University of Washington, USA','https://staff.washington.edu/jakevdp/','https://avatars2.githubusercontent.com/u/781659?v=4&s=460','<p>Jake is a Senior Data Science Fellow at the University of\r\nWashington\'s <a href=\"http://escience.washington.edu/\" target=\"_blank\">eScience institute</a>.\r\nHe researches and teaches in a variety of areas, including Astronomy, Astrostatistics, Machine Learning, and Scalable Computation.</p>',NULL);
 /*!40000 ALTER TABLE `authors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,6 +155,7 @@ CREATE TABLE `courses` (
   `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `title` varchar(255) DEFAULT NULL,
   `links` varchar(512) DEFAULT NULL,
+  `language` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -162,7 +166,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES (1,'2017-05-23 08:54:57','An Introduction to SQL','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Data%20Wrangling/Courses/An%20Introduction%20to%20SQL'),(2,'2017-05-23 08:54:57','Astrophysical Machine Learning','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Courses/Astrophysical%20Machine%20Learning'),(3,'2017-05-23 08:55:37','Introduction to Python','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Programming/Python'),(4,'2017-05-31 08:24:53','Scikit-learn Tutorial','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Courses/sklearn_tutorial');
+INSERT INTO `courses` VALUES (1,'2017-05-23 08:54:57','An Introduction to SQL','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Data%20Wrangling/Courses/An%20Introduction%20to%20SQL','EN'),(2,'2017-05-23 08:54:57','Astrophysical Machine Learning','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Courses/Astrophysical%20Machine%20Learning','EN'),(3,'2017-05-23 08:55:37','Introduction to Python','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Programming/Python','EN'),(4,'2017-05-31 08:24:53','Scikit-learn Tutorial','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Courses/sklearn_tutorial','EN');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -178,6 +182,7 @@ CREATE TABLE `examples` (
   `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `title` varchar(255) DEFAULT NULL,
   `links` varchar(512) DEFAULT NULL,
+  `language` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -188,7 +193,7 @@ CREATE TABLE `examples` (
 
 LOCK TABLES `examples` WRITE;
 /*!40000 ALTER TABLE `examples` DISABLE KEYS */;
-INSERT INTO `examples` VALUES (1,'2017-05-23 14:27:13','Predicting Pulsar Candidates','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples'),(2,'2017-05-23 08:52:58','Gaussian Mixture Model for Unsupervised Galaxy Classification','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Unsupervised%20Learning/Examples'),(3,'2017-05-23 08:53:25','Simple Neural Network','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples'),(4,'2017-05-23 08:53:25','Exoplanet properties','https://github.com/astro4dev/OAD-Data-Science-Toolkit/blob/master/Teaching%20Materials/Data%20Wrangling/Examples/Exoplanets_sort_and_plot/Exoplanets_sort_and_plot.ipynb');
+INSERT INTO `examples` VALUES (1,'2017-05-23 14:27:13','Predicting Pulsar Candidates','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples','EN'),(2,'2017-05-23 08:52:58','Gaussian Mixture Model for Unsupervised Galaxy Classification','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Unsupervised%20Learning/Examples','EN'),(3,'2017-05-23 08:53:25','Simple Neural Network','https://github.com/astro4dev/OAD-Data-Science-Toolkit/tree/master/Teaching%20Materials/Machine%20Learning/Supervised%20Learning/Examples','EN'),(4,'2017-05-23 08:53:25','Exoplanet properties','https://github.com/astro4dev/OAD-Data-Science-Toolkit/blob/master/Teaching%20Materials/Data%20Wrangling/Examples/Exoplanets_sort_and_plot/Exoplanets_sort_and_plot.ipynb','EN');
 /*!40000 ALTER TABLE `examples` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,7 +330,7 @@ CREATE TABLE `topics_astr` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `topics_astr` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -334,8 +339,32 @@ CREATE TABLE `topics_astr` (
 
 LOCK TABLES `topics_astr` WRITE;
 /*!40000 ALTER TABLE `topics_astr` DISABLE KEYS */;
-INSERT INTO `topics_astr` VALUES (1,'Galaxies'),(5,'Solar & Stellar'),(6,'Planetary science'),(7,'More topics coming...');
+INSERT INTO `topics_astr` VALUES (1,'Galaxies'),(5,'Solar & Stellar'),(6,'Planetary science'),(7,'no_topic');
 /*!40000 ALTER TABLE `topics_astr` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `topics_astr__assessments`
+--
+
+DROP TABLE IF EXISTS `topics_astr__assessments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `topics_astr__assessments` (
+  `topic_id` int(11) NOT NULL DEFAULT '0',
+  `assessment_id` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`topic_id`,`assessment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `topics_astr__assessments`
+--
+
+LOCK TABLES `topics_astr__assessments` WRITE;
+/*!40000 ALTER TABLE `topics_astr__assessments` DISABLE KEYS */;
+INSERT INTO `topics_astr__assessments` VALUES (7,1);
+/*!40000 ALTER TABLE `topics_astr__assessments` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -358,7 +387,7 @@ CREATE TABLE `topics_astr__courses` (
 
 LOCK TABLES `topics_astr__courses` WRITE;
 /*!40000 ALTER TABLE `topics_astr__courses` DISABLE KEYS */;
-INSERT INTO `topics_astr__courses` VALUES (1,2),(2,2),(3,2);
+INSERT INTO `topics_astr__courses` VALUES (1,2),(2,2),(3,2),(7,1),(7,3),(7,4);
 /*!40000 ALTER TABLE `topics_astr__courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -382,7 +411,7 @@ CREATE TABLE `topics_astr__examples` (
 
 LOCK TABLES `topics_astr__examples` WRITE;
 /*!40000 ALTER TABLE `topics_astr__examples` DISABLE KEYS */;
-INSERT INTO `topics_astr__examples` VALUES (1,2),(5,1),(6,4);
+INSERT INTO `topics_astr__examples` VALUES (1,2),(5,1),(6,4),(7,3);
 /*!40000 ALTER TABLE `topics_astr__examples` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -395,4 +424,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-28 12:08:34
+-- Dump completed on 2017-08-04 17:16:41
