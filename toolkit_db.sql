@@ -218,7 +218,7 @@ CREATE TABLE `skills` (
 
 LOCK TABLES `skills` WRITE;
 /*!40000 ALTER TABLE `skills` DISABLE KEYS */;
-INSERT INTO `skills` VALUES (1,'2017-05-19 12:53:40','Data Wrangling'),(2,'2017-05-19 12:53:40','Python'),(4,'2017-05-19 12:53:40','Machine Learning'),(5,'2017-05-19 12:53:40','R'),(6,'2017-05-19 12:53:40','More topics coming...');
+INSERT INTO `skills` VALUES (1,'2017-05-19 12:53:40','Data Wrangling'),(2,'2017-05-19 12:53:40','Python'),(4,'2017-05-19 12:53:40','Machine Learning'),(5,'2017-05-19 12:53:40','R');
 /*!40000 ALTER TABLE `skills` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -424,4 +424,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-04 17:16:41
+-- Dump completed on 2017-08-07 16:25:11
